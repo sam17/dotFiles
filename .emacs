@@ -31,12 +31,14 @@
 (custom-set-variables
  '(initial-frame-alist (quote ((fullscreen . maximized)))))
 
+;; Competitive programming frame
+(global-set-key (kbd "C-x C-.") (kbd "C-x 3 C-u 9 C-x } C-x z z") )
 
 ;;; activate ecb
 (require 'ecb)
 (require 'ecb-autoloads)
 
-(setq ecb-layout-name "left5")
+(setq ecb-layout-name "left8")
 
 (setq ecb-show-sources-in-directories-buffer 'always)
 
@@ -49,11 +51,11 @@
 (global-set-key (kbd "C-;") 'ecb-show-ecb-windows)
 (global-set-key (kbd "C-'") 'ecb-hide-ecb-windows)
 ;;; quick navigation between ecb windows
-(global-set-key (kbd "C-)") 'ecb-goto-window-edit1)
-(global-set-key (kbd "C-!") 'ecb-goto-window-directories)
-(global-set-key (kbd "C-@") 'ecb-goto-window-sources)
-(global-set-key (kbd "C-#") 'ecb-goto-window-methods)
-(global-set-key (kbd "C-$") 'ecb-goto-window-compilation)
+(global-set-key (kbd "C-M-0") 'ecb-goto-window-edit1)
+(global-set-key (kbd "C-M-1") 'ecb-goto-window-directories)
+(global-set-key (kbd "C-M-2") 'ecb-goto-window-sources)
+(global-set-key (kbd "C-M-3") 'ecb-goto-window-methods)
+(global-set-key (kbd "C-M-4") 'ecb-goto-window-compilation)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
