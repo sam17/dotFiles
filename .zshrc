@@ -82,3 +82,15 @@ alias zshconfig="mate ~/.zshrc"
 
 ##ROS
 source /opt/ros/indigo/setup.zsh
+export CATKIN_WORKSPACE=/home/dementor/catkin_ws
+source $CATKIN_WORKSPACE/devel/setup.zsh
+export EDITOR=emacs24
+
+##TELEKYB
+export TELEKYB=$CATKIN_WORKSPACE/src/telekyb
+export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CATKIN_WORKSPACE/src/telekyb/
+export TELEKYB_CMAKE_SCRIPTS_DIR=$TELEKYB/cmake_scripts
+export ViconDataStreamSDKCPP_ROOT=$TELEKYB/external_libraries/ViconDataStream_SDK
+
+### Added by the Heroku Toolbelt
+export PATH="/usr/local/heroku/bin:$PATH"

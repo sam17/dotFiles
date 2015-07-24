@@ -1,0 +1,5 @@
+[user]
+	email = soumyadeep9@gmail.com
+	name = dementor
+[core]
+	excludesfile = /home/dementor/.gitignore_global

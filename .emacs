@@ -34,6 +34,9 @@
 ;; Competitive programming frame
 (global-set-key (kbd "C-x C-.") (kbd "C-x 3 C-u 9 C-x } C-x z z") )
 
+;;Parenthesis Highlighting
+(show-paren-mode 1)
+
 ;;; activate ecb
 (require 'ecb)
 (require 'ecb-autoloads)
@@ -75,3 +78,7 @@
 (setq mu4e-reply-to-address "soumyadeep9@gmail.com"
  user-mail-address "soumyadeep9@gmail.com"
  user-full-name  "Soumyadeep Mukherjee")
+
+;;Flycheck
+(add-hook 'after-init-hook #'global-flycheck-mode)
+
