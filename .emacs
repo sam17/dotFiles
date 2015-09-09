@@ -1,12 +1,6 @@
-;;; Emacs is not a package manager, and here we load its package manager!
 (require 'package)
-(dolist (source '(("marmalade" . "http://marmalade-repo.org/packages/")
-                  ("elpa" . "http://tromey.com/elpa/")
-                  ;; TODO: Maybe, use this after emacs24 is released
-                  ;; (development versions of packages)
-                  ("melpa" . "http://melpa.milkbox.net/packages/")
-                  ))
-  (add-to-list 'package-archives source t))
+(add-to-list 'package-archives
+	     '("melpa" . "http://melpa.milkbox.net/packages/"))
 (package-initialize)
 
 (setq inhibit-splash-screen t)
@@ -29,7 +23,7 @@
 (setq autopair-autowrap t)
 
 (custom-set-variables
- '(initial-frame-alist (quote ((fullscreen . maximized)))))
+'(initial-frame-alist (quote ((fullscreen . maximized)))))
 
 ;; Competitive programming frame
 (global-set-key (kbd "C-x C-.") (kbd "C-x 3 C-u 9 C-x } C-x z z") )
@@ -37,9 +31,25 @@
 ;;Parenthesis Highlighting
 (show-paren-mode 1)
 
+;;Ido
+(ido-mode t)
+(setq
+ ido-ignore-buffers ; ignore these guys
+ '("\\` " "^\*Mess" "^\*Back" ".*Completion" "^\*Ido")
+ ido-case-fold t ; be case-insensitive
+ ido-use-filename-at-point nil ; don't use filename at point (annoying)
+ ido-use-url-at-point nil ; don't use url at point (annoying)
+ ido-enable-flex-matching t ; be flexible
+ ;; ido-max-prospects 100 ; don't spam minibuffer
+ ido-confirm-unique-completion nil ; don't wait for RET with unique completion
+ ido-default-file-method 'selected-window ; open files in selected window
+ ido-default-buffer-method 'selected-window ; open buffers in selected window
+ ido-max-directory-size 100000)
+
+
 ;;; activate ecb
 (require 'ecb)
-(require 'ecb-autoloads)
+;(require 'ecb-autoloads)  Bug in ecb
 
 (setq ecb-layout-name "left8")
 
@@ -73,7 +83,6 @@
  ;; If there is more than one, they won't work right.
  )
 
-
 ;; something about ourselves
 (setq mu4e-reply-to-address "soumyadeep9@gmail.com"
  user-mail-address "soumyadeep9@gmail.com"
@@ -81,4 +90,6 @@
 
 ;;Flycheck
 (add-hook 'after-init-hook #'global-flycheck-mode)
+
+
 
