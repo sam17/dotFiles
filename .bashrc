@@ -112,4 +112,5 @@ if ! shopt -oq posix; then
     . /etc/bash_completion
   fi
 fi
-source /opt/ros/indigo/setup.bash
+
+#source /opt/ros/indigo/setup.bash
