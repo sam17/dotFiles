@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/home/dementor/.oh-my-zsh
+export ZSH=/Users/dementor/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -81,16 +81,25 @@ alias zshconfig="mate ~/.zshrc"
 
 
 ##ROS
-source /opt/ros/indigo/setup.zsh
-export CATKIN_WORKSPACE=/home/dementor/catkin_ws
-source $CATKIN_WORKSPACE/devel/setup.zsh
-export EDITOR=emacs24
+#source /opt/ros/indigo/setup.zsh
+#export CATKIN_WORKSPACE=/home/dementor/catkin_ws
+#source $CATKIN_WORKSPACE/devel/setup.zsh
+#export EDITOR=emacs24
 
 ##TELEKYB
-export TELEKYB=$CATKIN_WORKSPACE/src/telekyb
-export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CATKIN_WORKSPACE/src/telekyb/
-export TELEKYB_CMAKE_SCRIPTS_DIR=$TELEKYB/cmake_scripts
-export ViconDataStreamSDKCPP_ROOT=$TELEKYB/external_libraries/ViconDataStream_SDK
+#export TELEKYB=$CATKIN_WORKSPACE/src/telekyb
+#export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CATKIN_WORKSPACE/src/telekyb/
+#export TELEKYB_CMAKE_SCRIPTS_DIR=$TELEKYB/cmake_scripts
+#export ViconDataStreamSDKCPP_ROOT=$TELEKYB/external_libraries/ViconDataStream_SDK
 
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
+
+
+##Proxy
+export http_proxy='http://10.3.100.207:8080'
+export https_proxy='http://10.3.100.207:8080'
+export HTTP_PROXY='http://10.3.100.207:8080'
+export HTTPS_PROXY='http://10.3.100.207:8080'
+
+alias emacs='open -a /Applications/Emacs.app'

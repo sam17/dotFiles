@@ -92,4 +92,6 @@
 (add-hook 'after-init-hook #'global-flycheck-mode)
 
 
+;; Tramp mode
+(setq tramp-default-method "ssh")
 
