@@ -10,11 +10,11 @@
 (tool-bar-mode -1)
 (menu-bar-mode -1)
 (tooltip-mode -1)
-(set-scroll-bar-mode 'nil)
+;̣(set-scroll-bar-mode 'nil)
 
 (load-theme 'tango-dark t)
 
-(setq-default c-basic-offset 4 c-default-style "linux")
+(setq-default c-basic-offset 4 c-default-style "bsd")
 (setq-default tab-width 4 indent-tabs-mode t)
 (define-key c-mode-base-map (kbd "RET") 'newline-and-indent)
 
