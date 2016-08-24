@@ -1,0 +1,32 @@
+  async              20160711.2235 installed             Asynchronous processing in Emacs
+  autopair           20160304.437  installed             Automagically pair braces and quotes like TextMate
+  blank-mode         20130824.459  installed             minor mode to visualize TAB, (HARD) SPACE, NEWLINE
+  dash               20160820.501  installed             A modern list library for Emacs
+  ecb                20140215.114  installed             a code browser for Emacs
+  epl                20150517.433  installed             Emacs Package Library
+  flycheck           20160817.321  installed             On-the-fly syntax checking
+  flycheck-google... 20140806.925  installed             Help to comply with the Google C++ Style Guide
+  gh                 20160728.1525 installed             A GitHub library for Emacs
+  git-commit         20160821.1338 installed             Edit Git commit messages
+  go-mode            20160715.205  installed             Major mode for the Go programming language
+  ht                 20160806.1753 installed             The missing hash table library for Emacs
+  let-alist          1.0.4         installed             Easily let-bind values of an assoc-list by their names
+  logito             20120225.1255 installed             logging library for Emacs
+  magit              20160822.1854 installed             A Git porcelain inside Emacs
+  magit-find-file    20150702.130  installed             completing-read over all files in Git
+  magit-gh-pulls     20160513.310  installed             GitHub pull requests extension for Magit
+  magit-gitflow      20160809.1335 installed             gitflow extension for magit
+  magit-popup        20160821.1338 installed             Define prefix-infix-suffix command combos
+  marshal            20160807.1954 installed             eieio extension for automatic (un)marshalling
+  oauth              20130127.1751 installed             Oauth library.
+  oauth2             0.11          installed             OAuth 2.0 Authorization Protocol
+  pcache             20160724.1929 installed             persistent caching for Emacs.
+  pcmpl-homebrew     20160725.1939 installed             pcomplete for homebrew
+  php+-mode          20121129.1252 installed             A better PHP mode with Zend Framework 1 support.
+  pkg-info           20150517.443  installed             Information about packages
+  s                  20160711.525  installed             The long lost Emacs string manipulation library.
+  seq                2.16          installed             Sequence manipulation functions
+  url-shortener      20160404.1959 installed             shorten long url and expand tinyurl
+  web-beautify       20160410.1005 installed             Format HTML, CSS and JavaScript/JSON by js-beautify
+  websocket          20160720.2051 installed             Emacs WebSocket client and server
+  with-editor        20160821.1103 installed             Use the Emacsclient as $EDITOR
