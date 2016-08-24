@@ -9,7 +9,6 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
@@ -81,7 +80,7 @@ alias zshconfig="mate ~/.zshrc"
 
 
 ##ROS
-#source /opt/ros/indigo/setup.zsh
+source ~/ros_catkin_ws/install_isolated/setup.zsh
 #export CATKIN_WORKSPACE=/home/dementor/catkin_ws
 #source $CATKIN_WORKSPACE/devel/setup.zsh
 #export EDITOR=emacs24
@@ -97,9 +96,16 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 
 ##Proxy
-export http_proxy='http://10.3.100.207:8080'
-export https_proxy='http://10.3.100.207:8080'
-export HTTP_PROXY='http://10.3.100.207:8080'
-export HTTPS_PROXY='http://10.3.100.207:8080'
+# export http_proxy='http://10.3.100.207:8080'
+# export https_proxy='http://10.3.100.207:8080'
+# export HTTP_PROXY='http://10.3.100.207:8080'
+# export HTTPS_PROXY='http://10.3.100.207:8080'
 
-alias emacs='open -a /Applications/Emacs.app'
+#alias emacs='open -a /Applications/Emacs.app'
+
+export GOPATH="$HOME/Self/go/"
+
+export NVM_DIR="/Users/dementor/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
