@@ -1,5 +1,5 @@
 # dotFiles
-Repository to keep dot files of Dementor.
+Repository to keep . files of Dementor.
 
 ##Contents:
 
