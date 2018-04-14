@@ -1,0 +1,13 @@
+[user]
+	email = soumyadeep9@gmail.com
+	name = dementor
+[core]
+	excludesfile = /home/dementor/.gitignore_global
+	editor = nano
+[http]
+	postBuffer = 524288000
+[https]
+	postBuffer = 524288000
+[alias]
+	co = checkout
+	st = status
