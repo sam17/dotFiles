@@ -1,7 +1,5 @@
-
-
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/soumyadeepmukherjee/.oh-my-zsh
+export ZSH=/Users/dementor/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -11,7 +9,6 @@ ZSH_THEME="robbyrussell"
 
 # Uncomment the following line to use case-sensitive completion.
 # CASE_SENSITIVE="true"
-
 # Uncomment the following line to disable bi-weekly auto-update checks.
 # DISABLE_AUTO_UPDATE="true"
 
@@ -25,7 +22,7 @@ ZSH_THEME="robbyrussell"
 # DISABLE_AUTO_TITLE="true"
 
 # Uncomment the following line to enable command auto-correction.
-ENABLE_CORRECTION="true"
+# ENABLE_CORRECTION="true"
 
 # Uncomment the following line to display red dots whilst waiting for completion.
 # COMPLETION_WAITING_DOTS="true"
@@ -33,7 +30,7 @@ ENABLE_CORRECTION="true"
 # Uncomment the following line if you want to disable marking untracked files
 # under VCS as dirty. This makes repository status check for large repositories
 # much, much faster.
- DISABLE_UNTRACKED_FILES_DIRTY="true"
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
 
 # Uncomment the following line if you want to change the command execution time
 # stamp shown in the history command output.
@@ -47,7 +44,7 @@ ENABLE_CORRECTION="true"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git github sudo web-search)
+plugins=(git github sudo web-search zsh-syntax-highlighting zsh-autosuggestions)
 
 # User configuration
 
@@ -60,11 +57,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
- if [[ -n $SSH_CONNECTION ]]; then
-   export EDITOR='nano'
- else
-   export EDITOR='emacs'
- fi
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -83,7 +80,7 @@ alias zshconfig="mate ~/.zshrc"
 
 
 ##ROS
-#source /opt/ros/indigo/setup.zsh
+#source ~/ros_catkin_ws/install_isolated/setup.zsh
 #export CATKIN_WORKSPACE=/home/dementor/catkin_ws
 #source $CATKIN_WORKSPACE/devel/setup.zsh
 #export EDITOR=emacs24
@@ -99,71 +96,69 @@ export PATH="/usr/local/heroku/bin:$PATH"
 
 
 ##Proxy
-#export http_proxy='http://10.3.100.207:8080'
-#export https_proxy='http://10.3.100.207:8080'
-#export HTTP_PROXY='http://10.3.100.207:8080'
-#export HTTPS_PROXY='http://10.3.100.207:8080'
+# export http_proxy='http://172.16.2.30:8080'
+# export https_proxy='http://172.16.2.30:8080'
+# export HTTP_PROXY='http://172.16.2.30:8080'
+# export HTTPS_PROXY='http://172.16.2.30:8080'
 
 #alias emacs='open -a /Applications/Emacs.app'
 
-##HADOOP
-export HADOOP_HOME=/usr/local/Cellar/hadoop/2.7.2
-export HADOOP_PREFIX=$HADOOP_HOME/libexec
-export HADOOP_CONF_DIR=$HADOOP_HOME/libexec/etc/hadoop
-export PIG_HOME=/usr/local/Cellar/pig/0.16.0
-export HADOOP_MAPRED_HOME=$HADOOP_PREFIX
-export HADOOP_COMMON_HOME=$HADOOP_PREFIX
-export HADOOP_HDFS_HOME=$HADOOP_PREFIX 
-export YARN_HOME=$HADOOP_PREFIX 
-export HADOOP_COMMON_LIB_NATIVE_DIR=$HADOOP_HOME/lib/native 
-export PATH=$PATH:$HADOOP_HOME/sbin:$HADOOP_HOME/bin 
-export HADOOP_INSTALL=$HADOOP_HOME
-export HBASE_HOME=/usr/local/Cellar/hbase/1.2.2/libexec
-export HBASE_CONF_DIR=$HBASE_HOME/conf
+export GOPATH="$HOME/Self/go/"
 
-##Add profile settings
-source ~/.profile
+export NVM_DIR="/Users/dementor/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
-##Appdynamics
-alias gateway='ssh -i ~/Documents/pems/cps-common-us-west2.pem  ubuntu@ec2-35-167-23-210.us-west-2.compute.amazonaws.com'
-alias dc2='ssh -t soumyadeep.mukherjee@neptune.saas.appdynamics.com'
-id() {
-	docker ps | grep "$1" | awk -F' ' '{print $1}'
-}
+alias socks5='ssh -p 443 -D 8123 -f -q -C -N root@128.199.125.117  && /Applications/Firefox.app/Contents/MacOS/firefox &'
+
+test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
+
+
+export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+source /Users/dementor/.rvm/scripts/rvm
+
+export ANDROID_HOME=${HOME}/Library/Android/sdk
+export PATH=${PATH}:${ANDROID_HOME}/tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+
+alias quine='ssh -i ~/Documents/quine.pem ubuntu@ec2-35-154-27-20.ap-south-1.compute.amazonaws.com'
+#export PATH="/usr/local/opt/opencv3/bin:$PATH"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
-alias k='kubectl'
-alias loadgen='ssh -i ~/Documents/pems/cps_sr.pem  ec2-user@52.33.86.191'
 
-sshsaas() {
-	echo "Fetching hosts for "$1
-	hostdata=$(curl -s "http://debug.saas.appdynamics.com/data/app/$1/node")
-	hostnames=( $(echo $hostdata | jq '.[] | .node_name') )
-	statuses=( $(echo $hostdata | jq '.[] | .controller_status') )
+alias ecs='emacsclient -n'
+export PATH=/usr/local/anaconda3/bin:"$PATH"
 
-	n=${#hostnames[@]}
-	COMB=()
-	for (( i=1; i<=n; i++ ))
-	do
-		COMB[$i]=${hostnames[$i]//\"}":"${statuses[$i]//\"}
-	done
-	COMB+=(quit)
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/dementor/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/dementor/google-cloud-sdk/path.zsh.inc'; fi
 
-	PS3='Which host do you want to ssh to?(Type the number and hit enter):'
-	select opt in "${COMB[@]}"
-	do
-		case $opt in
-			"quit")
-				break
-				;;
-			*)
-				hostname=$(echo $opt | cut -d':' -f1 | sed 's/$/.ord.app.dy/')
-				ssh $hostname
-				break
-				;;
-		esac
-	done
-}
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/dementor/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/dementor/google-cloud-sdk/completion.zsh.inc'; fi
 
-alias gw='./gradlew'
-alias grst='git reset --hard HEAD'
 alias gpom='git pull origin master'
+alias grst='git reset --hard HEAD'
+. /Users/dementor/anaconda3/etc/profile.d/conda.sh
+
+### Self
+alias azkaban="ssh root@142.93.214.204"
+
+### Prachaar
+alias prachaar-prod="ssh root@139.59.93.230"
+
+### Morphle
+alias morphle-prod="ssh root@206.189.131.16"
+alias morphle-utils="ssh root@159.65.158.244"
+alias morphle-staging="ssh root@139.59.6.176"
+export MORPHLE_HOME=~/Mirror/morphle-data/
+export DEPLOYMENT_MODE=offline
+export SCANNER_HOME=$MORPHLE_HOME/Morphle/
+export PYTHONPATH=~/morphle-src/morpheus/src
+export USER_HOME=~/
+export SCANNER_NAME=meganium
+export CONFIG_PATH="${USER_HOME}/morphle-src/scano/devops/config/scano/${SCANNER_NAME}.yaml"
+export USB_PORT=/dev/ttyACM0
+export LAST_PREVIEW_LOCATION="${USER_HOME}/morphle_home/Morphle/dev/debug/"
+export MORPHLE_APP=~/morphle-src/morpheus
+export SCAN_DRIVE=/Volumes/Seagate\ Backup\ Plus\ Drive/Morphle/
+export GOOGLE_APPLICATION_CREDENTIALS=~/Downloads/service_account.json
+export REDIS_HOST="localhost"
+export REDIS_PORT=6379
+export JENKINS_TOKEN="113988a14e6a2507f0c0d840223bd4b796"
