@@ -1,5 +1,5 @@
 # Path to your oh-my-zsh installation.
-export ZSH=/Users/dementor/.oh-my-zsh
+export ZSH=/Users/soumyadeepmukherjee/.oh-my-zsh
 
 # Set name of the theme to load.
 # Look in ~/.oh-my-zsh/themes/
@@ -57,11 +57,11 @@ source $ZSH/oh-my-zsh.sh
 # export LANG=en_US.UTF-8
 
 # Preferred editor for local and remote sessions
-# if [[ -n $SSH_CONNECTION ]]; then
-#   export EDITOR='vim'
-# else
-#   export EDITOR='mvim'
-# fi
+if [[ -n $SSH_CONNECTION ]]; then
+	export EDITOR='vim'
+ else
+	export EDITOR='ecs'
+fi
 
 # Compilation flags
 # export ARCHFLAGS="-arch x86_64"
@@ -78,87 +78,74 @@ source $ZSH/oh-my-zsh.sh
 alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-
-##ROS
-#source ~/ros_catkin_ws/install_isolated/setup.zsh
-#export CATKIN_WORKSPACE=/home/dementor/catkin_ws
-#source $CATKIN_WORKSPACE/devel/setup.zsh
-#export EDITOR=emacs24
-
-##TELEKYB
-#export TELEKYB=$CATKIN_WORKSPACE/src/telekyb
-#export ROS_PACKAGE_PATH=$ROS_PACKAGE_PATH:$CATKIN_WORKSPACE/src/telekyb/
-#export TELEKYB_CMAKE_SCRIPTS_DIR=$TELEKYB/cmake_scripts
-#export ViconDataStreamSDKCPP_ROOT=$TELEKYB/external_libraries/ViconDataStream_SDK
-
 ### Added by the Heroku Toolbelt
 export PATH="/usr/local/heroku/bin:$PATH"
 
-
-##Proxy
-# export http_proxy='http://172.16.2.30:8080'
-# export https_proxy='http://172.16.2.30:8080'
-# export HTTP_PROXY='http://172.16.2.30:8080'
-# export HTTPS_PROXY='http://172.16.2.30:8080'
-
-#alias emacs='open -a /Applications/Emacs.app'
-
 export GOPATH="$HOME/Self/go/"
+export PATH=$PATH:${GOPATH}/bin
 
-export NVM_DIR="/Users/dementor/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
-
-alias socks5='ssh -p 443 -D 8123 -f -q -C -N root@128.199.125.117  && /Applications/Firefox.app/Contents/MacOS/firefox &'
+# export NVM_DIR="/Users/dementor/.nvm"
+# [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh"  # This loads nvm
 
 test -e "${HOME}/.iterm2_shell_integration.zsh" && source "${HOME}/.iterm2_shell_integration.zsh"
 
 
-export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
-source /Users/dementor/.rvm/scripts/rvm
+#export PATH="$PATH:$HOME/.rvm/bin" # Add RVM to PATH for scripting
+#source /Users/dementor/.rvm/scripts/rvm
 
 export ANDROID_HOME=${HOME}/Library/Android/sdk
-export PATH=${PATH}:${ANDROID_HOME}/tools
-export PATH=${PATH}:${ANDROID_HOME}/platform-tools
+export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/emulator:${ANDROID_HOME}/tools
 
-alias quine='ssh -i ~/Documents/quine.pem ubuntu@ec2-35-154-27-20.ap-south-1.compute.amazonaws.com'
-#export PATH="/usr/local/opt/opencv3/bin:$PATH"
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
 
 alias ecs='emacsclient -n'
 export PATH=/usr/local/anaconda3/bin:"$PATH"
 
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/dementor/google-cloud-sdk/path.zsh.inc' ]; then source '/Users/dementor/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/dementor/google-cloud-sdk/completion.zsh.inc' ]; then source '/Users/dementor/google-cloud-sdk/completion.zsh.inc'; fi
-
 alias gpom='git pull origin master'
 alias grst='git reset --hard HEAD'
-. /Users/dementor/anaconda3/etc/profile.d/conda.sh
+alias co='checkout'
 
 ### Self
 alias azkaban="ssh root@142.93.214.204"
 
-### Prachaar
-alias prachaar-prod="ssh root@139.59.93.230"
 
-### Morphle
-alias morphle-prod="ssh root@206.189.131.16"
-alias morphle-utils="ssh root@159.65.158.244"
-alias morphle-staging="ssh root@139.59.6.176"
-export MORPHLE_HOME=~/Mirror/morphle-data/
-export DEPLOYMENT_MODE=offline
-export SCANNER_HOME=$MORPHLE_HOME/Morphle/
-export PYTHONPATH=~/morphle-src/morpheus/src
-export USER_HOME=~/
-export SCANNER_NAME=meganium
-export CONFIG_PATH="${USER_HOME}/morphle-src/scano/devops/config/scano/${SCANNER_NAME}.yaml"
-export USB_PORT=/dev/ttyACM0
-export LAST_PREVIEW_LOCATION="${USER_HOME}/morphle_home/Morphle/dev/debug/"
-export MORPHLE_APP=~/morphle-src/morpheus
-export SCAN_DRIVE=/Volumes/Seagate\ Backup\ Plus\ Drive/Morphle/
-export GOOGLE_APPLICATION_CREDENTIALS=~/Downloads/service_account.json
-export REDIS_HOST="localhost"
-export REDIS_PORT=6379
-export JENKINS_TOKEN="113988a14e6a2507f0c0d840223bd4b796"
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+__conda_setup="$('/Users/soumyadeepmukherjee/anaconda3/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+if [ $? -eq 0 ]; then
+    eval "$__conda_setup"
+else
+    if [ -f "/Users/soumyadeepmukherjee/anaconda3/etc/profile.d/conda.sh" ]; then
+        . "/Users/soumyadeepmukherjee/anaconda3/etc/profile.d/conda.sh"
+    else
+        export PATH="/Users/soumyadeepmukherjee/anaconda3/bin:$PATH"
+    fi
+fi
+unset __conda_setup
+# <<< conda initialize <<<
+
+
+### Kubernetes
+alias kprod='kubectl -n prod --context=sin0'
+alias kprodm='kubectl -n prod --context=sin0 -n monitoring'
+alias kprodn='kubectl -n prod --context=sin0 -n ingress-nginx'
+alias kdevn='kubectl -n dev --context=cen0 -n ingress-nginx'
+alias kdev='kubectl -n dev --context=cen0'
+alias kdevm='kubectl -n dev --context=cen0 -n monitoring'
+alias vpn3p='ssh udaan@10.255.0.6'
+alias 1passudaan='eval $(op signin team_udaan)'
+alias jumpbox='ssh soumyadeep@gw-tata.hq.udaan.io'
+alias kgpods='kprod get po | grep '
+alias kglogs='kprod logs -f '
+alias k='kubectl'
+alias helm3='/usr/local/Cellar/helm/3.2.0/bin/helm'
+
+### Postgres
+alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/Users/soumyadeepmukherjee/Downloads/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/soumyadeepmukherjee/Downloads/google-cloud-sdk/path.zsh.inc'; fi
+
+# The next line enables shell command completion for gcloud.
+if [ -f '/Users/soumyadeepmukherjee/Downloads/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/soumyadeepmukherjee/Downloads/google-cloud-sdk/completion.zsh.inc'; fi
