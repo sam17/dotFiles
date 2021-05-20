@@ -1,0 +1,33 @@
+#!/bin/bash
+
+origin_url=$(git remote get-url origin)
+udaan_email="soumyadeep.m@udaan.com"
+personal_email="soumyadeep9@gmail.com"
+
+re="^(https|git)(:\/\/|@)([^\/:]+)[\/:]([^\/:]+)\/(.+).git$"
+
+
+get_domain() {
+    if [[ ${origin_url} =~ $re ]]; then    
+       protocol=${BASH_REMATCH[1]}
+       separator=${BASH_REMATCH[2]}
+       hostname=${BASH_REMATCH[3]}
+       user=${BASH_REMATCH[4]}
+       repo=${BASH_REMATCH[5]}
+    fi
+    echo "Org is ${user}"     
+}
+
+set_user(){
+    case ${user} in
+        "udaan-com")
+            git config user.email ${udaan_email}
+        ;;
+        *) 
+            git config user.email ${personal_email}
+        ;;
+    esac
+}
+
+get_domain
+set_user
