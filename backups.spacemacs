@@ -37,8 +37,12 @@ This function should only modify configuration layer settings."
      html
      rust
      javascript
-     python
+     csharp
      yaml
+     typescript
+     react
+     (pdf :variables pdf-annot-activate-created-annotations t)
+     kubernetes
      ;; ----------------------------------------------------------------
      ;; Example of useful layers you may want to use right away.
      ;; Uncomment some layer names and press `SPC f e R' (Vim style) or
@@ -46,33 +50,36 @@ This function should only modify configuration layer settings."
      ;; ----------------------------------------------------------------
      auto-completion
      better-defaults
-;;     emacs-lisp
      git
      helm
      lsp
-     markdown
-     multiple-cursors
+     (multiple-cursors :variables multiple-cursors-backend 'evil-mc)
      (shell :variables
              shell-default-height 30
              shell-default-position 'bottom)
      spell-checking
      syntax-checking
      version-control
+     auto-completion
+     github
+     (markdown :variables
+               markdown-live-preview-engine 'vmd
+               ;; markdown-command "/usr/local/bin/pandoc -t html5 -f markdown+smart --mathjax --highlight-style=pygments --toc --toc-depth 3 --template github.html5 --css html/css/github.css"
+               markdown-command "/usr/local/bin/markdown"
+               )
      treemacs
      (org :variables
+          org-want-todo-bindings t
           org-enable-notifications t
           org-enable-github-support t
           org-enable-org-journal-support t
           org-enable-roam-support t
-          org-start-notification-daemon-on-startup t)
-     (ranger :variables
-           ranger-show-preview t
-           ranger-show-hidden t
-           ranger-cleanup-eagerly t
-           ranger-cleanup-on-disable t
-           ranger-ignored-extensions '("mkv" "flv" "iso" "mp4"))
+          org-startup-truncated nil
+          org-start-notification-daemon-on-startup t
+          org-todo-keywords '((sequence "TODO(t)" "WAITING(w)" "NOT_STARTED(n)" "AT_RISK(a)" "PROGRESS(o)" "|" "CANCELLED(c)" "DONE(d)"))
      )
      (python :variables python-backend 'anaconda)
+     )
 
 
    ;; List of additional packages that will be installed without being wrapped
@@ -83,7 +90,7 @@ This function should only modify configuration layer settings."
    ;; `dotspacemacs/user-config'. To use a local version of a package, use the
    ;; `:location' property: '(your-package :location "~/path/to/your-package/")
    ;; Also include the dependencies as they will not be resolved automatically.
-   dotspacemacs-additional-packages '()
+   dotspacemacs-additional-packages '( ag )
 
    ;; A list of packages that cannot be updated.
    dotspacemacs-frozen-packages '()
@@ -408,7 +415,7 @@ It should only modify the values of Spacemacs settings."
    ;;   :size-limit-kb 1000)
    ;; When used in a plist, `visual' takes precedence over `relative'.
    ;; (default nil)
-   dotspacemacs-line-numbers nil
+   dotspacemacs-line-numbers `relative
 
    ;; Code folding method. Possible values are `evil', `origami' and `vimish'.
    ;; (default 'evil)
@@ -541,19 +548,29 @@ dump."
   (setq org-directory "~/org")
   (setq org-mobile-inbox-for-pull "~/org/flagged.org")
   (setq org-mobile-directory "~/Dropbox/Apps/MobileOrg")
-  (setq org-agenda-files
-        (append
-         (file-expand-wildcards "~/org/*.org")))
   (setq org-roam-directory (concat org-directory "/roam"))
   (setq org-roam-db-location (concat org-roam-directory "/db/org-roam.db"))
   (setq org-roam-index-file (concat org-directory "/index.org"))
+  (with-eval-after-load 'org (setq org-agenda-files
+   (append
+    (file-expand-wildcards "~/org/roam/*.org"))))
+  (setq-default org-display-custom-times t)
+  (setq org-time-stamp-custom-formats
+        '("<%d %b %Y>" . "<%d/%m/%y %a %H:%M>"))
+  (setq org-todo-keyword-faces
+        '(("TODO" . "orange")
+          ("WAITING" . "orange")
+          ("AT_RISK" . "red")
+          ("PROGRESS" . "yellow")
+          ("CANCELLED" . "green")
+          ("DONE" . "green")))
+  )
  
   "Configuration for user code:
 This function is called at the very end of Spacemacs startup, after layer
 configuration.
 Put your configuration code here, except for variables that should be set
-before packages are loaded."
-  )
+before packages are loaded." 
 
 ;; Do not write anything past this comment. This is where Emacs will
 ;; auto-generate custom variable definitions.
