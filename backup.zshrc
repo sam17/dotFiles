@@ -130,26 +130,14 @@ unset SUDO_UID SUDO_GID SUDO_USER
 
 
 ### Kubernetes
-alias kprodsin='kubectl -n prod --context=sin0'
-alias kprodcen='kubectl -n prod --context=cen0'
-alias kprodm='kubectl -n prod --context=sin0 -n monitoring'
-alias kprodn='kubectl -n prod --context=sin0 -n ingress-nginx'
-alias kdevn='kubectl -n dev --context=cen0 -n ingress-nginx'
-alias kdev='kubectl -n dev --context=cen0'
-alias kdevl='kubectl -n linkerd --context=cen0'
-alias kdevm='kubectl -n dev --context=cen0 -n monitoring'
-alias kceni='kubectl -n infra --context=cen0'
-alias ksini='kubectl -n infra --context=sin0'
-alias kud='kubectl --context=k8s0'
-alias vpn3p='ssh udaan@10.255.0.6'
-alias 1passudaan='eval $(op signin team_udaan)'
-alias jumpbox='ssh soumyadeep@gw-tata.hq.udaan.io'
-alias kgpods='kprod get po | grep '
-alias kglogs='kprod logs -f '
+alias kprodcen='kubectl -n prod --context=cen'
+alias kdevn='kubectl -n dev --context=cen -n ingress-nginx'
+alias kdev='kubectl -n dev --context=cen'
+alias kdevm='kubectl -n dev --context=cen -n monitoring'
+alias kceni='kubectl -n infra --context=cen'
+alias kgpods='kprodcen get po | grep '
+alias kglogs='kprodcen logs -f '
 alias k='kubectl'
-alias vpnhw='ssh udaan@10.7.0.4'
-alias paymentjb='ssh soumyadeep@10.4.0.132'
-alias kudm='kubectl --context=k8s0 -n monitoring'
 
 ### Postgres
 alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
@@ -186,3 +174,6 @@ export JAVA_HOME=`/usr/libexec/java_home -v 1.9`
 export OPENSSL_ROOT_DIR=/opt/homebrew/opt/openssl@3
 source /Users/soumyadeepmukherjee/Self/openpilot/tools/openpilot_env.sh
 source /Users/soumyadeepmukherjee/Self/openpilot/tools/openpilot_env.sh
+export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
+export PATH="/Users/soumyadeepmukherjee/.gem/ruby/3.1.0/bin:$PATH"
+eval "$(rbenv init - zsh)"
