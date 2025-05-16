@@ -98,56 +98,24 @@ export PATH=${PATH}:${ANDROID_HOME}/platform-tools:${ANDROID_HOME}/emulator:${AN
 
 export PATH="/usr/local/opt/opencv3/bin:$PATH"
 
-alias ecs='emacsclient -n'
-export PATH=/usr/local/anaconda3/bin:"$PATH"
-
 alias gpom='git pull origin master'
 alias grst='git reset --hard HEAD'
 alias co='checkout'
-alias 'headphone-con'='BluetoothConnector --connect 00-16-94-1f-88-0d --notify'
-alias 'headphone-disc'='BluetoothConnector --disconnect 00-16-94-1f-88-0d --notify'
 
 ### Self
 alias azkaban="ssh dementor@206.189.140.208"
 alias scanpix="ssh soumyadeep@165.232.139.243"
 
 
-# >>> conda initialize >>>
-# !! Contents within this block are managed by 'conda init' !!
-__conda_setup="$('/Users/soumyadeepmukherjee/miniforge3/bin/conda' 'shell.bash' 'hook' 2> /dev/null)"
-if [ $? -eq 0 ]; then
-    eval "$__conda_setup"
-else
-    if [ -f "/Users/soumyadeepmukherjee/miniforge3/etc/profile.d/conda.sh" ]; then
-        . "/Users/soumyadeepmukherjee/miniforge3/etc/profile.d/conda.sh"
-    else
-        export PATH="/Users/soumyadeepmukherjee/miniforge3/bin:$PATH"
-    fi
-fi
-unset __conda_setup
-unset SUDO_UID SUDO_GID SUDO_USER
-# <<< conda initialize <<<
-
-
 ### Kubernetes
-alias kprodcen='kubectl -n prod --context=cen'
-alias kdevn='kubectl -n dev --context=cen -n ingress-nginx'
-alias kdev='kubectl -n dev --context=cen'
-alias kdevm='kubectl -n dev --context=cen -n monitoring'
-alias kceni='kubectl -n infra --context=cen'
-alias kgpods='kprodcen get po | grep '
-alias kglogs='kprodcen logs -f '
 alias k='kubectl'
+alias kcen='kubectl --context=k8s-cen'
+alias kaws='kubectl --context=aps1'
+alias kazus='kubectl --context=wus'
 
 ### Postgres
 alias pg_start="launchctl load ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
 alias pg_stop="launchctl unload ~/Library/LaunchAgents/homebrew.mxcl.postgresql.plist"
-
-# The next line updates PATH for the Google Cloud SDK.
-if [ -f '/Users/soumyadeepmukherjee/google-cloud-sdk/path.zsh.inc' ]; then . '/Users/soumyadeepmukherjee/google-cloud-sdk/path.zsh.inc'; fi
-
-# The next line enables shell command completion for gcloud.
-if [ -f '/Users/soumyadeepmukherjee/google-cloud-sdk/completion.zsh.inc' ]; then . '/Users/soumyadeepmukherjee/google-cloud-sdk/completion.zsh.inc'; fi
 
 pip_install_save() {
     package_name=$1
@@ -177,3 +145,19 @@ source /Users/soumyadeepmukherjee/Self/openpilot/tools/openpilot_env.sh
 export PATH="/opt/homebrew/opt/ruby/bin:$PATH"
 export PATH="/Users/soumyadeepmukherjee/.gem/ruby/3.1.0/bin:$PATH"
 eval "$(rbenv init - zsh)"
+
+## [Completion] 
+## Completion scripts setup. Remove the following line to uninstall
+[[ -f /Users/soumyadeepmukherjee/.dart-cli-completion/zsh-config.zsh ]] && . /Users/soumyadeepmukherjee/.dart-cli-completion/zsh-config.zsh || true
+## [/Completion]
+
+export PATH="/Users/soumyadeepmukherjee/.shorebird/bin:$PATH"
+export MODULAR_HOME="/Users/soumyadeepmukherjee/.modular"
+export PATH="/Users/soumyadeepmukherjee/.modular/pkg/packages.modular.com_mojo/bin:$PATH"
+
+# The next line updates PATH for the Google Cloud SDK.
+if [ -f '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc' ]; then . '/opt/homebrew/share/google-cloud-sdk/path.zsh.inc'; fi
+
+export CODEFLASH_API_KEY='cf-hRuLff7BHQIKBpJppwIIkm6OGSjOAwdScqC9CzcRuxiQwm9SCE70t9jpJEetWvb3'
+
+. "$HOME/.local/bin/env"
